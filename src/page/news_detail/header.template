@@ -1,0 +1,4 @@
+<h2 class="H2">发布时间：{{date}}</h2>
+<h2 class="H2"> 浏览次数：{{count}}</h2>
+<h2 class="H2">作者：{{author}}</h2>
+<a href="/news.html?newsType={{newsType}}" class="return clearfix" title="">返回列表<i class="i1"><img src="{{img}}" width="100%"></i></a>

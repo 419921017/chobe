@@ -1,0 +1,24 @@
+<h2 class="H2 wow fadeInUp">{{title}}</h2>
+<h3 class="H3 wow fadeInUp">({{subTitle}})</h3>
+<ul class="comDeT wow fadeInUp slides-list">
+  {{#list}}
+  <div>
+    <li class="list"><img src="{{img}}" width="100%"></li>
+  </div>
+  {{/list}}
+</ul>
+<div class="comDeDBox wow fadeInUp">
+  <ul class="comDeD slides-list">
+    {{#list}}
+    <div>
+      <li class="list"><img src="{{img}}" width="100%"></li>
+    </div>
+    {{/list}}
+  </ul>
+</div>
+<div class="p wow fadeInUp">
+  <p><span class="H5">{{title}}({{subTitle}})</span><br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp;<br />{{descript}}
+  </p>
+  <p><br /></p>
+</div>

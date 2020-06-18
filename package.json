@@ -1,0 +1,43 @@
+{
+  "name": "chobe",
+  "version": "1.0.0",
+  "description": "乔贝资本",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^6.0.2",
+    "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "start": "set WEBPACK_ENV=dev && webpack-dev-server",
+    "build": "set WEBPACK_ENV=online && webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codinglilong/chobe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codinglilong/chobe/issues"
+  },
+  "homepage": "https://github.com/codinglilong/chobe#readme",
+  "dependencies": {
+    "core-js": "3",
+    "dayjs": "^1.8.28",
+    "hogan.js": "^3.0.2",
+    "js-cookie": "^2.2.1"
+  }
+}

@@ -1,0 +1,16 @@
+{{#list}}
+<li class="list clearfix wow fadeInUp">
+  <a href="delivery_detail.html?id={{id}}">
+    <div class="img">
+      <img src="{{img}}" width="100%">
+    </div>
+    <div class="text">
+      <h4 class="H4 elli">{{title}}</h4>
+      <h5 class="H5 elli">({{subTitle}})</h5>
+      <div class="p">
+        {{descript}}
+      </div>
+    </div>
+  </a>
+</li>
+{{/list}}

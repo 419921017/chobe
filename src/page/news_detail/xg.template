@@ -1,0 +1,8 @@
+{{#list}}
+<li class="list">
+  <a href="{{path}}" title="">
+    <h5 class="H5">{{title}}</h5>
+    <h6 class="H6">{{date}}</h6>
+  </a>
+</li>
+{{/list}}

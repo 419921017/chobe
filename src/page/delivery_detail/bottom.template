@@ -1,0 +1,13 @@
+{{#list}}
+<li class="list wow zoomIn">
+  <a href="delivery_detail.html?id={{id}}" class="box clearfix">
+    <div class="img"><img src="{{img}}" width="100%"></div>
+    <div class="text">
+      <h4 class="H4 elli">{{title}}<span class="span">({{subTitle}})</span></h4>
+      <div class="p">
+        {{descript}}
+      </div>
+    </div>
+  </a>
+</li>
+{{/list}}

@@ -1,0 +1,19 @@
+{{#list}}
+<li class="l1">
+  <h4>
+    <div class="container"><a href="{{path}}" target="_self" data-intl="{{enName}}">{{name}}</a>
+    </div>
+  </h4>
+  <ul class="ul2">
+    <div class="container">
+      {{#children}}
+      <li>
+        <h5>
+          <a href="{{path}}" target="_self" data-intl="{{enName}}">{{name}}</a>
+        </h5>
+      </li>
+      {{/children}}
+    </div>
+  </ul>
+</li>
+{{/list}}

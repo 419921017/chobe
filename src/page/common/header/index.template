@@ -1,0 +1,16 @@
+<ul class="menu clearfix">
+  {{#list}}
+  <li class="nli" id="nav_{{id}}">
+    <span>
+      <a href="{{path}}" target="_self" data-n="{{id}}" title="{{name}}" data-intl="{{enName}}">
+        {{name}}
+      </a>
+    </span>
+    <ul class="sub" data-m="{{id}}">
+      {{#children}}
+      <li><a href="{{path}}" target="_self" data-intl="{{enName}}">{{name}}</a></li>
+      {{/children}}
+    </ul>
+  </li>
+  {{/list}}
+</ul>

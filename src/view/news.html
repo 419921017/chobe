@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%= require('html-loader!./layout/head-common.html') %>
+  <title><%= htmlWebpackPlugin.options.title %>-乔贝资本</title>
+</head>
+
+<body>
+  <!--pc top-->
+  <%= require('html-loader!./layout/header.html') %>
+
+  <div class="pz_banner c_banner">
+    <img src="images/news/banner_new6682973.jpg" width="100%" title="" alt="" class="visible-lg visible-md">
+    <img src="images/news/banner_new_ph7256952.jpg" width="100%" title="" alt="" class="visible-xs visible-sm">
+  </div>
+  <main class="pz_main minHeight">
+    <div class="container">
+      <div class="company clearfix">
+        <div class="erji wow fadeInUp">
+          <div class="erjiTi">
+            <h4 class="H4">新闻动态</h4>
+            <h5 class="H5">news</h5>
+          </div>
+          <div class="erjiCon" id="left_menu">
+          </div>
+        </div>
+        <div class="pageRight">
+          <ul class="new" id="news_list">
+          </ul>
+          <div class="paging wow zoomIn">
+            <a class="pageup"></a>
+            <a class="hover a">1</a><span class="aPh">1/1</span>
+            <a class="pagedown"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!--pc footer-->
+  <%= require('html-loader!./layout/footer.html') %>
+</body>
+
+</html>

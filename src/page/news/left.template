@@ -1,0 +1,3 @@
+{{#list}}
+<a href="{{path}}" target="_self"  class="li hd {{className}}" data-intl="{{enName}}">{{name}}</a>
+{{/list}}
