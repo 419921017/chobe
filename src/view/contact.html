@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%= require('html-loader!./layout/head-common.html') %>
+  <title><%= htmlWebpackPlugin.options.title %>-乔贝资本</title>
+</head>
+
+<body>
+  <!--pc top-->
+  <%= require('html-loader!./layout/header.html') %>
+  <div class="pz_banner c_banner">
+    <img src="images/banner_join4098684.jpg" width="100%" title="" alt="" class="visible-lg visible-md">
+    <img src="images/banner_join_ph4549322.jpg" width="100%" title="" alt="" class="visible-xs visible-sm">
+  </div>
+  <main class="pz_main minHeight">
+    <div class="container">
+      <div class="company clearfix">
+        <div class="erji wow fadeInUp">
+          <div class="erjiTi">
+            <h4 class="H4">加入我们</h4>
+            <h5 class="H5"></h5>
+          </div>
+          <div class="erjiCon">
+            <a href="join.html" target="_self" id="left_7" class="li hd ">招聘信息</a>
+            <a href="contact.html" target="_self" id="left_6" class="li hd on">联系我们</a>
+          </div>
+        </div>
+        <div class="pageRight">
+          <div class="map" id="bdmap">加载中...</div>
+          <ul class="addInfor">
+
+            <li class="list clearfix wow fadeInUp">
+              <span class="ico"><img src="images/p324474745.png" width="100%"></span>
+              <div class="text">
+                <h4 class="H4">地址</h4>
+                <h5 class="H5">上海市浦东新区樱花路868号建工大厦国际广场2001室</h5>
+              </div>
+            </li>
+
+            <li class="list clearfix wow fadeInUp">
+              <span class="ico"><img src="images/p334142990.png" width="100%"></span>
+              <div class="text">
+                <h4 class="H4">电话</h4>
+                <h5 class="H5">+86-021-80317693</h5>
+              </div>
+            </li>
+
+            <li class="list clearfix wow fadeInUp">
+              <span class="ico"><img src="images/p345910429.png" width="100%"></span>
+              <div class="text">
+                <h4 class="H4">邮箱</h4>
+                <h5 class="H5"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                    data-cfemail="cca1adbfb8a9be8cafa4a5a2ada6a2bfe2afa3a1">[email&#160;protected]</a></h5>
+              </div>
+            </li>
+
+          </ul>
+          <ul class="pageRwm clearfix">
+
+            <li class="list">
+              <div class="box clearfix wow zoomIn">
+                <span class="img"><img src="images/j337851459.jpg" width="100%"></span>
+                <div class="text">
+                  <h4 class="H4">微信公众号</h4>
+                  <h5 class="H5">扫描二维码关注 获取更多相关内容</h5>
+                </div>
+              </div>
+            </li>
+
+            <li class="list">
+              <div class="box clearfix wow zoomIn">
+                <span class="img"><img src="images/j337851459.jpg" width="100%"></span>
+                <div class="text">
+                  <h4 class="H4">微信公众号</h4>
+                  <h5 class="H5">扫描二维码关注 获取更多相关内容</h5>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script
+    src="http://api.map.baidu.com/getscript?v=2.0&ak=0jz7CuaQAxFkoH7XumKlrhk3&services=&t=20191128165839"></script>
+  <script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap() {
+      createMap();//创建地图
+      setMapEvent();//设置地图事件
+      addMapControl();//向地图添加控件
+      addMarker();//向地图中添加marker
+    }
+    //创建地图函数：
+    function createMap() {
+      var map = new BMap.Map("bdmap");//在百度地图容器中创建一个地图
+      var point = new BMap.Point(121.568878, 31.213583);//定义一个中心点坐标
+      map.setMaxZoom(19)
+      map.centerAndZoom(point, 16);//设定地图的中心点和坐标并将地图显示在地图容器中
+      window.map = map;//将map变量存储在全局
+
+      var mapStyle = {
+        //features: ["road", "building", "water", "land"],//隐藏地图上的poi
+        style: "grayscale"  //设置地图风格为高端黑,目前支持normal（默认样式）,dark（深色样式）,light（浅色样式）
+      }
+      map.setMapStyle(mapStyle);
+    }
+    //地图事件设置函数：
+    function setMapEvent() {
+      map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+      map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+      map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+      map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+    //地图控件添加函数：
+    function addMapControl() {
+      //向地图中添加缩放控件
+      var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+      map.addControl(ctrl_nav);
+      //向地图中添加缩略图控件
+      var ctrl_ove = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 0 });
+      map.addControl(ctrl_ove);
+      //向地图中添加比例尺控件
+      var ctrl_sca = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+      map.addControl(ctrl_sca);
+    }
+    //标注点数组
+    var markerArr = [{ title: "&nbsp;", content: "<p class='con'>地址：上海市浦东新区樱花路868号建工大厦国际广场2001室<br>电话：+86-021-80317693</p>", point: "121.568878, 31.213583", isOpen: 1, icon: { w: 59, h: 44, l: 0, t: 0, x: 6, lb: 5 } }];
+    //创建marker
+    function addMarker() {
+      for (var i = 0; i < markerArr.length; i++) {
+        var json = markerArr[i];
+        var p0 = json.point.split(",")[0];
+        var p1 = json.point.split(",")[1];
+        var point = new BMap.Point(p0, p1);
+        var iconImg = createIcon(json.icon);
+        var marker = new BMap.Marker(point, { icon: iconImg });
+        var iw = createInfoWindow(i);
+        var label = new BMap.Label(json.title, { "offset": new BMap.Size(json.icon.lb - json.icon.x + 10, -20) });
+        marker.setLabel(label);
+        map.addOverlay(marker);
+        label.setStyle({
+          borderColor: "#808080",
+          color: "#333",
+          cursor: "pointer"
+        });
+        (function () {
+          var index = i;
+          var _iw = createInfoWindow(i);
+          var _marker = marker;
+          _marker.addEventListener("click", function () {
+            this.openInfoWindow(_iw);
+          });
+          _iw.addEventListener("open", function () {
+            _marker.getLabel().hide();
+          })
+          _iw.addEventListener("close", function () {
+            _marker.getLabel().show();
+          })
+          label.addEventListener("click", function () {
+            _marker.openInfoWindow(_iw);
+          })
+          if (!!json.isOpen) {
+            label.hide();
+            _marker.openInfoWindow(_iw);
+          }
+        })()
+      }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i) {
+      var json = markerArr[i];
+      var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>" + json.content + "</div>");
+      return iw;
+    }
+    //创建一个Icon
+    function createIcon(json) {
+      var icon = new BMap.Icon("images/ico.png", new BMap.Size(59, 44), { imageOffset: new BMap.Size(-json.l, -json.t), infoWindowOffset: new BMap.Size(json.lb + 5, 1), offset: new BMap.Size(json.x, json.h) })
+      return icon;
+    }
+    initMap();//创建和初始化地图
+  </script>
+  <!--pc footer-->
+  <%= require('html-loader!./layout/footer.html') %>
+</body>
+
+</html>

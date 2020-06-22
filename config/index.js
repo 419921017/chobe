@@ -24,6 +24,22 @@ const config = {
     {
       key: 'news_detail',
       name: "新闻详情",
+    },
+    {
+      key: 'culture',
+      name: "企业文化",
+    },
+    {
+      key: 'welfare',
+      name: "乔贝公益",
+    },
+    {
+      key: 'join',
+      name: "加入我们",
+    },
+    {
+      key: 'contact',
+      name: "联系我们",
     }
   ],
   getHtmlConfig: function (name, title) {

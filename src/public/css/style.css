@@ -3856,3 +3856,17 @@ i {
   background: url(../images/j251473798.jpg) center no-repeat; 
   background-size: cover;
 }
+
+.text2 {font-size:16px; line-height:30px; color:#333;}
+
+.text3 {
+  font-size: 16px;
+  line-height: 30px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.text3 a {
+  color: #9a5e2a;
+}
+        

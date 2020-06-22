@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%= require('html-loader!./layout/head-common.html') %>
+  <title><%= htmlWebpackPlugin.options.title %>-乔贝资本</title>
+</head>
+
+<body>
+  <!--pc top-->
+  <%= require('html-loader!./layout/header.html') %>
+  <div class="pz_banner c_banner">
+    <img src="images/banner_about_ph1242947.jpg" width="100%" title="" alt="" class="visible-lg visible-md">
+    <img src="images/banner_about6789281.jpg" width="100%" title="" alt="" class="visible-xs visible-sm">
+  </div>
+  <main class="pz_main minHeight">
+    <div class="container">
+      <div class="company clearfix">
+        <div class="erji wow fadeInUp">
+          <div class="erjiTi">
+            <h4 class="H4">企业文化</h4>
+            <h5 class="H5"></h5>
+          </div>
+          <div class="erjiCon">
+
+          </div>
+        </div>
+        <div class="pageRight">
+          <div class="text3">
+            <p>
+              世界那么大，我们有缘聚在一起，如何塑造默契的团队，如何培养良好的体魄，是乔贝资本领导人一直以来的思考与坚持。公司每年以“乔贝资本——在路上”为主题，以户外徒步为主要形式，2017-2019年分别带领全体员工及部分合作伙伴探索了甘肃张掖、新疆伊犁、阿拉善腾格里沙漠。当我们告别了手机、告别了网络，被浩瀚的银河笼罩着，才依稀记起那个在忙碌工作中迷失的自己。截止目前“乔贝资本——在路上（第三季）”活动已经结束，未来我们不会停下脚步，我们将一直走在路上！
+            </p>
+            <p>
+              此外，每周五下午是乔贝资本全体员工的体能训练时间，主要以跑步、羽毛球活动为主，公司领导人坚信“健康的身体才能更好地工作”。为了增强团队凝聚力，促进公司良好的发展，我们还会定期举办各类特色活动，立志共同打造一个有灵魂的专业团队
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!--pc footer-->
+  <%= require('html-loader!./layout/footer.html') %>
+</body>
+
+</html>
