@@ -1,7 +1,6 @@
 import { helper } from 'utils';
 import Cookies from 'js-cookie';
 import { intlType } from 'utils/constants';
-import { switchIntl } from 'utils/intl';
 import { menus } from 'utils/menu';
 
 var templateIndex = require('./index.template');
@@ -138,28 +137,27 @@ const pageFn = {
         })
       }
     }
-
-
     this.bindEvent();
   },
   bindEvent: function () {
+    const _this=this;
     $(document).on('click', '#switchCN', function () {
       Cookies.set('page_intl', intlType.cn);
-      switchIntl();
+      _this.reload();
     });
 
     $(document).on('click', '#switchEN', function () {
       Cookies.set('page_intl', intlType.en);
-      switchIntl();
+      _this.reload();
     });
 
     $(document).on('click', '#switchPhoneCN', function () {
       Cookies.set('page_intl', intlType.cn);
-      switchIntl();
+      _this.reload();
     });
     $(document).on('click', '#switchPhoneEN', function () {
       Cookies.set('page_intl', intlType.en);
-      switchIntl();
+      _this.reload();
     });
 
     $(document).on('click', '#topPhoneMenu .ul2 a', function () {
@@ -179,6 +177,9 @@ const pageFn = {
     const result = helper.renderHtml(templateIndex, { list: menus });
     const $topMenu = $('#topMenu');
     $topMenu.html(result);
+  },
+  reload:function(){
+    window.location.reload();
   },
   loadPhoneMenu: function () {
     const result = helper.renderHtml(templatePhone, { list: menus });

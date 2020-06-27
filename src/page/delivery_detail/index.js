@@ -2,7 +2,7 @@
 import { helper } from 'utils';
 import Cookies from 'js-cookie';
 import { deliveries } from 'utils/data';
-import { intlType } from 'utils/constants';
+import { intlType, deliveryType } from 'utils/constants';
 
 require('../common');
 
@@ -20,6 +20,8 @@ const pageFn = {
     });
     $('#left_11').addClass('on');
     $('#nav_3').addClass('on');
+  },
+  renderSildes: function () {
     $('.comDeT').slick({
       dots: false,
       slidesToShow: 1,
@@ -56,29 +58,41 @@ const pageFn = {
     });
   },
   renderContent: function () {
+    const _this = this;
     const id = helper.getUrlParam("id");
-    $("#delivery_banner").html(`<img src="images/news/banner_${id}.jpg" width="100%" height="650" title="" alt="">`)
-    const newsItem = deliveries.find(i => i.id === Number(id));
-    const type = Cookies.get('page_intl');
-    let title = newsItem.title;
-    let subTitle = newsItem.subTitle;
-    let descript = newsItem.descript;
-    if (Number(type) === intlType.en) {
-      title = newsItem.enTitle;
-      subTitle = newsItem.enSubTitle;
-      descript = newsItem.enDescript;
-    }
-    const obj = {
-      title,
-      subTitle,
-      descript,
-      list: newsItem.images.map(i => ({ img: "images/news/" + i }))
-    }
-    const result = helper.renderHtml(templateSlides, obj);
-    const $content = $('#page_content')
-    $content.html(result);
+    $("#delivery_banner").html(`<img src="images/news/banner_${id}.jpg" width="100%" height="650" title="" alt="">`);
+
+    const intl = Cookies.get('page_intl');
+    const type = Number(helper.getUrlParam("type")) || 1;
+    helper.request({
+      data: {
+        func: "articleList",
+        article_type: deliveryType[type - 1],
+      },
+      success: function (data) {
+        let list = data.map(item => {
+          return {
+            ...item,
+            title: Number(intl) === intlType.en ? item.title_en : item.title,
+            img: item.cover_image,
+            subTitle: Number(intl) === intlType.en ? item.desc_en : item.desc,
+            descript: Number(intl) === intlType.en ? item.content_en : item.content,
+            list: item.images.map(i => ({ img: i })),
+            type,
+          }
+        })
+        const newsItem = list.find(i => i.id === Number(id));
+
+        const result = helper.renderHtml(templateSlides, { ...newsItem });
+        const $content = $('#page_content')
+        $content.html(result);
+        _this.renderSildes();
+        _this.renderNextPage(list);
+      }
+    })
+
   },
-  renderNextPage: function () {
+  renderNextPage: function (deliveries) {
     const id = helper.getUrlParam("id");
     const index = deliveries.findIndex(i => i.id === Number(id));
     let list = [];
@@ -89,16 +103,6 @@ const pageFn = {
     } else {
       list = [deliveries[index - 1], deliveries[index + 1]]
     }
-    const type = Cookies.get('page_intl');
-    list = list.map(item => {
-      return {
-        id: item.id,
-        title: Number(type) === intlType.en ? item.enTitle : item.title,
-        img: "images/news/" + item.img,
-        subTitle: Number(type) === intlType.en ? item.enSubTitle : item.subTitle,
-        descript: Number(type) === intlType.en ? item.enDescript : item.descript,
-      }
-    })
     const result = helper.renderHtml(templateBottom, { list });
     const $content = $('#delivery_bottom')
     $content.html(result);
@@ -107,6 +111,5 @@ const pageFn = {
 
 $(function () {
   pageFn.renderContent();
-  pageFn.renderNextPage();
   pageFn.init();
 });

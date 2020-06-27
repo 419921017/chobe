@@ -5,15 +5,14 @@ export const helper = {
   request: function (param) {
     var _this = this;
     $.ajax({
-      type: param.method || 'get',
-      url: param.url || '',
+      type: param.method || 'post',
+      url: param.url || 'http://chobe.kingform.net/backend/interface.php',
       dataType: param.tyle || 'json',
-      data: param.data || '',
+      data:JSON.stringify( param.data) || '',
       success: function (res) {
-        if (res.status === 0) {//请求成功
-          typeof param.success === 'function' && param.success(res.data, res.msg);
+        if (res.code === 200) {//请求成功
+          typeof param.success === 'function' && param.success(res.data);
         } else if (res.status === 10) {//没有登录
-          _this.doLogin();
         } else if (res.status === 1) {//请求错误
           typeof param.error === 'function' && param.error(res.msg);
         } else {

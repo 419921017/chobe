@@ -1,6 +1,6 @@
 {{#list}}
 <li class="list clearfix wow fadeInUp">
-  <a href="news_detail.html?id={{id}}&newsType={{newsType}}">
+  <a href="{{path}}">
     <div class="img"><img src="{{img}}" width="100%"></div>
     <div class="text">
       <h4 class="H4 elli">{{title}}</h4>

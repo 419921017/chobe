@@ -1,0 +1,20 @@
+{{#list}}
+<section class="senior-managers-item ceo">
+  <div class="senior-managers-item-container">
+    <div class="senior-managers-item-inner">
+      <div class="senior-managers-avatar mobile">
+        <img class="lazy" src="{{avatar}}">
+      </div>
+      <div class="senior-managers-avatar pc">
+        <img class="lazy" src="{{avatar}}"
+          style="display: inline;">
+      </div>
+      <div class="senior-managers-info">
+        <h3 class="senior-managers-name">{{name}}</h3>
+        <p class="senior-managers-position">xx科技董事长&amp;CEO</p>
+        <p class="senior-managers-intro">{{content}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{{/list}}

@@ -1,0 +1,9 @@
+<div class="erjiTi">
+  <h4 class="H4" data-intl="{{enName}}">{{name}}</h4>
+  <h5 class="H5"></h5>
+</div>
+<div class="erjiCon">
+  {{#list}}
+  <a href="{{path}}" target="_self" class="li hd {{className}}" data-intl="{{enName}}">{{name}}</a>
+  {{/list}}
+</div>

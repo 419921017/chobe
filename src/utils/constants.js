@@ -1,10 +1,9 @@
-export const newsType = {
-  hyxw: 1,
-  IPO: 2,
-  ssxw: 3,
-  qbdt: 4,
-  gzh: 5
-}
+export const newsType = ["行业新闻", "IPO", "时事新闻", "乔贝动态", "被投企业公众号文章"];
+
+export const deliveryType = ["被投企业", "TMT", "生物医药", "消费升级"];
+
+export const cultureType = ["在路上", "其他"];
+
 export const intlType = {
   cn: 1,
   en: 2,

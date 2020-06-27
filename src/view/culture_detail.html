@@ -10,27 +10,25 @@
   <!--pc top-->
   <%= require('html-loader!./layout/header.html') %>
   <div class="top_90">
-    <div class="pz_banner c_banner" id="delivery_banner">
-      <!-- <img src="banner_company7070633.jpg" width="100%" title="" alt="" class="visible-lg visible-md">
-    <img src="banner_company_ph5437044.jpg" width="100%" title="" alt="" class="visible-xs visible-sm"> -->
-    </div>
     <main class="pz_main minHeight">
       <div class="container">
         <div class="company clearfix">
           <%= require('html-loader!./layout/sider.html') %>
           <div class="pageRight">
-            <div class="comDe" id="page_content">
-            </div>
-            <div class="comDe2">
-              <h5 class="H5 wow fadeInUp">其他被投企业</h5>
-              <ul class="comDe2Ul clearfix" id="delivery_bottom">
-              </ul>
+            <div class="fullscreen">
+              <div id="gallery" class="gallery_photo">
+              </div>
+              <div id="nav" class="navbar">
+                <button id="preview">&lt; 前一张</button>
+                <button id="next">下一张 &gt;</button>
+              </div>
             </div>
           </div>
         </div>
+      </div>
     </main>
+
   </div>
-  <!--pc footer-->
   <%= require('html-loader!./layout/footer.html') %>
 </body>
 

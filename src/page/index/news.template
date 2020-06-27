@@ -1,0 +1,15 @@
+{{#list}}
+<div>
+  <li class="list">
+    <a href="{{path}}">
+      <img src="{{img}}" width="100%">
+      <div class="text">
+        <h4 class="H4 elli">{{title}}</h4>
+        <div class="p">{{content}}</div>
+        <h5 class="time" data-date="2019-08-19"><span class="day">{{day}}</span>{{year}}</h5>
+        <h6 class="H6"><span class="span">learn more</span><span class="ico"></span></h6>
+      </div>
+    </a>
+  </li>
+</div>
+{{/list}}

@@ -30,6 +30,10 @@ const config = {
       name: "企业文化",
     },
     {
+      key: 'culture_detail',
+      name: '文化详情',
+    },
+    {
       key: 'welfare',
       name: "乔贝公益",
     },

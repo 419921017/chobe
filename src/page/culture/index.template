@@ -6,9 +6,9 @@
     </div>
     <div class="text">
       <h4 class="H4 elli">{{title}}</h4>
-      <h5 class="H5 elli">{{subTitle}}</h5>
+      <h5 class="H5 elli"></h5>
       <div class="p">
-        {{descript}}
+        {{content}}
       </div>
     </div>
   </a>

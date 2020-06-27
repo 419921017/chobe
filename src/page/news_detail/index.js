@@ -1,67 +1,66 @@
 import { helper } from 'utils';
 import Cookies from 'js-cookie';
 import { intlType, newsType } from 'utils/constants';
-import { switchIntl } from 'utils/intl';
-import { menus } from 'utils/menu';
-import { newsData } from 'utils/data';
 import dayjs from 'dayjs';
 
 require('../common');
 
-const templateLeft = require('./left.template');
 const templateHeader = require('./header.template');
 const templateXGList = require('./xg.template');
 
 const pageFn = {
   init: function () {
-    this.renderLeft();
-    this.renderHeader();
-    this.renderContent();
-    this.renderGLList();
-    this.renderXGList();
+    this.getLoad();
   },
-  renderLeft: function () {
-    const news_type = Number(helper.getUrlParam("newsType")) || newsType.hyxw;
-    const menu_item = menus.find(i => i.key === 'news');
-    const list = menu_item.children.map(i => ({
-      name: i.name,
-      enName: i.enName,
-      className: news_type === i.id ? "on" : '',
-      path: i.path,
-    }));
-    const result = helper.renderHtml(templateLeft, { list });
-    const $left_menu = $('#left_menu')
-    $left_menu.html(result);
-  },
-  renderHeader: function () {
-    const type = Cookies.get('page_intl');
-    const news_id = Number(helper.getUrlParam("id")) || 1;
-    const item = newsData.find(i => i.id === news_id);
-    const obj = {
-      id: item.id,
-      newsType: item.type,
-      count: item.count,
-      title: Number(type) === intlType.en ? item.enTitle : item.title,
-      img: 'images/news/back.png',
-      content: Number(type) === intlType.en ? item.enContent : item.content,
-      date: dayjs(item.date).format('YYYY.MM.DD HH:mm'),
-    };
+  getLoad: function () {
+    const _this = this;
+    const intl = Cookies.get('page_intl');
+    const type = Number(helper.getUrlParam("type")) || 1;
+    helper.request({
+      data: {
+        func: "articleList",
+        article_type: newsType[type - 1],
+      },
+      success: function (data) {
+        let list = data.map(item => {
+          return {
+            ...item,
+            title: Number(intl) === intlType.en ? item.title_en : item.title,
+            author: item.author,
+            img: item.image,
+            contentA: Number(intl) === intlType.en ? item.contentA_en : item.contentA,
+            contentB: Number(intl) === intlType.en ? item.contentB_en : item.contentB,
+            date: item.created_time,
+            count: item.view_number,
+            path: `news.html?type=${type}`,
+            imgback: "images/news/back.png"
+          }
+        });
+        _this.renderHeader(list);
 
-    const result = helper.renderHtml(templateHeader, obj);
-    const $news_header = $('#news_header')
-    $news_header.html(result);
-    $('#title').html(obj.title);
+      }
+    })
   },
-  renderContent: function () {
-    const type = Cookies.get('page_intl');
+  renderHeader: function (list) {
     const news_id = Number(helper.getUrlParam("id")) || 1;
-    const item = newsData.find(i => i.id === news_id);
-    $('#news_content').html(Number(type) === intlType.en ? item.enContent : item.content);
+    const item = list.find(i => i.id === news_id);
+    const result = helper.renderHtml(templateHeader, item);
+    const $news_header = $('#news_header');
+    $news_header.html(result);
+    $('#title').html(item.title);
+    this.renderContent(item);
+    this.renderGLList(list);
+    this.renderXGList(list);
   },
-  renderGLList: function () {
+  renderContent: function (item) {
+    $('#news_content').html(`<p>${item.contentA}</p><p>${item.contentB}</p>`);
+  },
+
+  renderGLList: function (newsData) {
     const id = helper.getUrlParam("id");
-    const type = Cookies.get('page_intl');
     const index = newsData.findIndex(i => i.id === Number(id));
+    const type = Number(helper.getUrlParam("type")) || 1;
+    const intl = Cookies.get('page_intl');
     let newHtml = '<a href="javascript:;" class="pageUp elli"><span data-intl="previous">上一篇</span>：<span data-intl="empty">没有了</span></a>';
     let lastHtml = '<a href="javascript:;" class="pageDown elli"><span data-intl="next">下一篇</span>：<span data-intl="empty">没有了</span></a>';
     if (newsData.length > 1) {
@@ -78,30 +77,29 @@ const pageFn = {
         lastItem = newsData[index + 1];
       }
       if (newItem) {
-        newHtml = `<a href="/news_detail.html?id=${newItem.id}&newsType=${newItem.type}" class="pageUp elli">
+        newHtml = `<a href="/news_detail.html?id=${newItem.id}&type=${type}" class="pageUp elli">
                     <span data-intl="previous">上一篇</span>：
                     <span>
-                    ${ Number(type) === intlType.en ? newItem.enTitle : newItem.title}
+                    ${ Number(intl) === intlType.en ? newItem.title_en : newItem.title}
                     </span>
                   </a>`;
       }
       if (lastItem) {
-        lastHtml = `<a href="/news_detail.html?id=${lastItem.id}&newsType=${lastItem.type}" class="pageDown elli">
+        lastHtml = `<a href="/news_detail.html?id=${lastItem.id}&type=${type}" class="pageDown elli">
                       <span data-intl="next">下一篇</span>：
                       <span>
-                      ${ Number(type) === intlType.en ? lastItem.enTitle : lastItem.title}
+                      ${ Number(intl) === intlType.en ? lastItem.title_en : lastItem.title}
                       </span>
                     </a>`;
       }
-      $('#gl_list').html(newHtml + lastHtml)
+      $('#gl_list').html(newHtml + lastHtml);
     }
   },
-  renderXGList: function () {
+  renderXGList: function (newList) {
     const id = helper.getUrlParam("id");
-    const type = Cookies.get('page_intl');
-    const news_type = Number(helper.getUrlParam("newsType")) || newsType.hyxw;
-    const newList = newsData.filter(i => i.type === news_type);
+    const intl = Cookies.get('page_intl');
     const index = newList.findIndex(i => i.id === Number(id));
+    const type = Number(helper.getUrlParam("type")) || 1;
 
     let list = [];
     let emptyObj = {
@@ -117,9 +115,9 @@ const pageFn = {
       return {
         id: item.id,
         type: item.type,
-        path: item.id ? `/news_detail.html?id=${item.id}&newsType=${item.type}` : 'javascript:;',
+        path: item.id ? `/news_detail.html?id=${item.id}&type=${type}` : 'javascript:;',
         date: dayjs(item.date).format('YYYY.MM.DD'),
-        title: Number(type) === intlType.en ? item.enTitle : item.title,
+        title: Number(intl) === intlType.en ? item.enTitle : item.title,
       }
     });
     const result = helper.renderHtml(templateXGList, { list });
@@ -130,4 +128,5 @@ const pageFn = {
 
 $(function () {
   pageFn.init();
+  $("#nav_4").addClass("on")
 })

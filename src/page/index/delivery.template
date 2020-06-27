@@ -1,0 +1,21 @@
+{{#list}}
+<div>
+  <li class="list">
+    <a href="{{path}}">
+      <img src="{{img}}" width="100%">
+      <div class="imgOn">
+        <div class="text2 clearfix">
+          <span class="ico"><img src="{{icon}}"></span>
+          <div class="text3">
+            <h4 class="H4 elli">{{title}}</h4>
+            <h5 class="H5 elli">{{subTitle}}</h5>
+            <div class="p">
+              {{descript}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </li>
+</div>
+{{/list}}
