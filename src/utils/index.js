@@ -6,7 +6,7 @@ export const helper = {
     var _this = this;
     $.ajax({
       type: param.method || 'post',
-      url: param.url || 'http://chobe.kingform.net/backend/interface.php',
+      url: param.url || 'http://api.chobe.cn/interface.php',
       dataType: param.tyle || 'json',
       data:JSON.stringify( param.data) || '',
       success: function (res) {

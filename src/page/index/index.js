@@ -68,16 +68,28 @@ const pageFn = {
       },
       success: function (data) {
         let list = data.map(item => {
+          let contentList = Number(intl) === intlType.en ? item.content_en : item.content;
+          let img = "";
+          let content = "";
+          contentList.forEach(item => {
+            if (item.indexOf('.jpg') > -1) {
+              if (!img) {
+                img = item;
+              }
+            } else {
+              content += `<p>${item}</p>`;
+            }
+          })
+
           return {
             ...item,
             title: Number(intl) === intlType.en ? item.title_en : item.title,
             author: item.author,
-            img: item.image,
-            content: Number(intl) === intlType.en ? item.contentA_en : item.contentA,
+            img,
+            content,
             year: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('YYYY-MM'),
             day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('DD'),
             path: `news_detail.html?id=${item.id}&type=1`
-
           }
         })
         const result = helper.renderHtml(news, { list: list || [] });

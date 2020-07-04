@@ -60,7 +60,7 @@ const pageFn = {
   renderContent: function () {
     const _this = this;
     const id = helper.getUrlParam("id");
-    $("#delivery_banner").html(`<img src="images/news/banner_${id}.jpg" width="100%" height="650" title="" alt="">`);
+    $("#delivery_banner").html(`<img src="images/news/banner_1.jpg" width="100%" height="650" title="" alt="">`);
 
     const intl = Cookies.get('page_intl');
     const type = Number(helper.getUrlParam("type")) || 1;

@@ -10,6 +10,10 @@
   <!--pc top-->
   <%= require('html-loader!./layout/header.html') %>
   <div class="top_90">
+    <div class="pz_banner c_banner">
+      <img src="images/banner_about_ph1242947.jpg" width="100%" title="" alt="" class="visible-lg visible-md">
+      <img src="images/banner_about6789281.jpg" width="100%" title="" alt="" class="visible-xs visible-sm">
+    </div>
     <main class="pz_main minHeight">
       <div class="container">
         <div class="company clearfix">
@@ -19,8 +23,14 @@
               <div id="gallery" class="gallery_photo">
               </div>
               <div id="nav" class="navbar">
-                <button id="preview">&lt; 前一张</button>
-                <button id="next">下一张 &gt;</button>
+                <button id="preview" data-intl="preview">&lt; 前一张</button>
+                <button id="next" data-intl="next">下一张 &gt;</button>
+              </div>
+              <div id="modal" class="page-modal">
+                <div class="page-modal-close">
+                  <span id="modal_close">x</span>
+                </div>
+                <div class="page-modal-content" id="modal_content"></div>
               </div>
             </div>
           </div>

@@ -2,9 +2,7 @@ import { helper } from 'utils';
 import Cookies from 'js-cookie';
 import { 
   intlType, 
-  deliveryType,
-  // cultureType ,
-
+  cultureType,
 } from 'utils/constants';
 
 require('../common');
@@ -21,7 +19,7 @@ const pageFn = {
     helper.request({
       data: {
         func: "articleList",
-        article_type: deliveryType[type - 1],
+        article_type: cultureType[type - 1],
       },
       success: function (data) {
         let list = data.map(item => {

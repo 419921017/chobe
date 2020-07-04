@@ -23,19 +23,31 @@ const pageFn = {
       },
       success: function (data) {
         let list = data.map(item => {
+          let contentList = Number(intl) === intlType.en ? item.content_en : item.content;
+          let img = "";
+          let content = "";
+          contentList.forEach(item => {
+            if (item.indexOf('.jpg') > -1) {
+              content += `<p><img src="${item}" alt="图片" /></p>`;
+            } else {
+              content += `<p>${item}</p>`;
+            }
+          })
+    
           return {
             ...item,
             title: Number(intl) === intlType.en ? item.title_en : item.title,
             author: item.author,
-            img: item.image,
-            contentA: Number(intl) === intlType.en ? item.contentA_en : item.contentA,
-            contentB: Number(intl) === intlType.en ? item.contentB_en : item.contentB,
+            img,
+            content,
             date: item.created_time,
             count: item.view_number,
-            path: `news.html?type=${type}`,
+            year: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('YYYY-MM'),
+            day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('DD'),
+            path: `news_detail.html?id=${item.id}&type=1`,
             imgback: "images/news/back.png"
           }
-        });
+        })
         _this.renderHeader(list);
 
       }
@@ -53,7 +65,7 @@ const pageFn = {
     this.renderXGList(list);
   },
   renderContent: function (item) {
-    $('#news_content').html(`<p>${item.contentA}</p><p>${item.contentB}</p>`);
+    $('#news_content').html(item.content);
   },
 
   renderGLList: function (newsData) {
@@ -120,6 +132,7 @@ const pageFn = {
         title: Number(intl) === intlType.en ? item.enTitle : item.title,
       }
     });
+
     const result = helper.renderHtml(templateXGList, { list });
     const $content = $('#xg_list')
     $content.html(result);
