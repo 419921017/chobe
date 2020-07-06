@@ -3967,7 +3967,15 @@ i {
   position: absolute;
   top: 23px;
   right: 0;
-  width: 114px
+  width: 114px;
+}
+
+@media (max-width:800px) {
+  .senior-managers-avatar {
+    height: 94px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
 }
 
  .senior-managers-avatar img {
