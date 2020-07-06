@@ -11,7 +11,6 @@
       </div>
       <div class="senior-managers-info">
         <h3 class="senior-managers-name">{{name}}</h3>
-        <p class="senior-managers-position">xx科技董事长&amp;CEO</p>
         <p class="senior-managers-intro">{{content}}</p>
       </div>
     </div>
