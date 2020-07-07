@@ -8,6 +8,7 @@ import { intlType } from 'utils/constants';
 require('../common');
 
 const indexTemp = require('./index.template');
+const teamTemp = require('./team.template');
 
 const pageFn = {
   init: function () {
@@ -32,31 +33,9 @@ const pageFn = {
       autoplaySpeed: 5000,
       fade: true,
     });
-    //关于我们 团队
-    $('.ab3Ul').slick({
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: true,
-      responsive: [
-        {
-          breakpoint: 1630,
-          settings: {
-            slidesToShow: 2,
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-          }
-        },
-      ]
-    });
   },
   getFounder: function () {
     const type = Cookies.get('page_intl');
-
     helper.request({
       data: {
         func: "articleList",
@@ -84,10 +63,56 @@ const pageFn = {
         article_type: "公司简介",
       },
       success: function (data) {
+        $("#about_img").attr("src", data.image);
         const $title = $('#title');
         $title.html(Number(type) === intlType.en ? data.title_en : data.title);
         const $content = $('#content');
         $content.html(Number(type) === intlType.en ? data.content_en : data.content);
+      }
+    })
+  },
+  getTeam: function () {
+    const type = Cookies.get('page_intl');
+    helper.request({
+      data: {
+        func: "articleList",
+        article_type: "核心团队",
+      },
+      success: function (data) {
+        let list = data.map(item => {
+          return {
+            ...item,
+            name: Number(type) === intlType.en ? item.name_en : item.name,
+            position: Number(type) === intlType.en ? item.position_en : item.position,
+            introduction: Number(type) === intlType.en ? item.introduction_en : item.introduction,
+          }
+        });
+
+        const result = helper.renderHtml(teamTemp, { list });
+        const $ab3Ul = $('#ab3Ul');
+        $ab3Ul.html(result);
+
+        //关于我们 团队
+        $('.ab3Ul').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          arrows: true,
+          dots: true,
+          responsive: [
+            {
+              breakpoint: 1630,
+              settings: {
+                slidesToShow: 2,
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+              }
+            },
+          ]
+        });
       }
     })
   }
@@ -97,4 +122,5 @@ $(function () {
   pageFn.init();
   pageFn.getProfile();
   pageFn.getFounder();
+  pageFn.getTeam();
 })

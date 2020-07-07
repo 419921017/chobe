@@ -4003,7 +4003,7 @@ i {
   bottom: -4px;
   height: 2px;
   width: 100%;
-  background-color: #9c612e;
+  background-color: #3A51FF
 }
 
  .senior-managers-position {
@@ -4335,4 +4335,11 @@ pre{
   background-color:transparent;
   text-align: left;
   color: #666;
+}
+.in3Ul .slick-slide img{
+  height: 453px;
+}
+.ab3Ul .slick-slide img{
+  width: 146px;
+  height: 146px;
 }

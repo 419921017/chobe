@@ -17,57 +17,64 @@ const pageFn = {
     this.loadNews();
     this.bindEvent();
   },
-  loadDelivery: function () {
+  loadDelivery: async function () {
+    const _this = this;
     const intl = Cookies.get('page_intl');
-    helper.request({
-      data: {
-        func: "articleList",
-        article_type: deliveryType[0],
-      },
-      success: function (data) {
-        let list = data.map(item => {
-          return {
+    const promise = deliveryType.map(item => {
+      return _this.getAllRequest(item)
+    })
+    const all = await Promise.all(promise);
+    let list = [];
+    all.forEach((data, index) => {
+      data.forEach(item => {
+        if (item.id) {
+          const obj = {
             ...item,
             title: Number(intl) === intlType.en ? item.title_en : item.title,
             img: item.cover_image,
             subTitle: Number(intl) === intlType.en ? item.desc_en : item.desc,
             descript: Number(intl) === intlType.en ? item.content_en : item.content,
-            path: `delivery_detail.html?id=${item.id}&type=1`,
+            path: `delivery_detail.html?id=${item.id}&type=${index + 1}`,
             icon: "/images/p68889474.png"
           }
-        })
-        const result = helper.renderHtml(delivery, { list: list || [] });
-        const $delivery_list = $('#delivery_list');
-        $delivery_list.html(result);
+          list.push(obj);
+        }
+      })
+    });
 
-        //首页 被投企业
-        $('.index2Ul').slick({
-          centerMode: true,
-          centerPadding: '22.7%',
-          slidesToShow: 1,
-          arrows: true,
-          dots: false,
-          responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                centerPadding: '20px',
-              }
-            },
-          ]
-        });
-      }
-    })
+    const result = helper.renderHtml(delivery, { list: list || [] });
+    const $delivery_list = $('#delivery_list');
+    $delivery_list.html(result);
+
+    //首页 被投企业
+    $('.index2Ul').slick({
+      centerMode: true,
+      centerPadding: '22.7%',
+      slidesToShow: 1,
+      arrows: true,
+      dots: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            centerPadding: '20px',
+          }
+        },
+      ]
+    });
   },
-  loadNews: function () {
+  loadNews: async function () {
+    
+    const _this = this;
     const intl = Cookies.get('page_intl');
-    helper.request({
-      data: {
-        func: "articleList",
-        article_type: newsType[0],
-      },
-      success: function (data) {
-        let list = data.map(item => {
+    const promise = newsType.map(item => {
+      return _this.getAllRequest(item)
+    })
+    const all = await Promise.all(promise);
+    let list = [];
+    all.forEach((data, index) => {
+      data.forEach(item => {
+        if (item.id) {
           let contentList = Number(intl) === intlType.en ? item.content_en : item.content;
           let img = "";
           let content = "";
@@ -80,8 +87,7 @@ const pageFn = {
               content += `<p>${item}</p>`;
             }
           })
-
-          return {
+          const obj = {
             ...item,
             title: Number(intl) === intlType.en ? item.title_en : item.title,
             author: item.author,
@@ -89,29 +95,51 @@ const pageFn = {
             content,
             year: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('YYYY-MM'),
             day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('DD'),
-            path: `news_detail.html?id=${item.id}&type=1`
+            path: `news_detail.html?id=${item.id}&type=${index + 1}`
           }
-        })
-        const result = helper.renderHtml(news, { list: list || [] });
-        const $news_list = $('#news_list');
-        $news_list.html(result);
+          list.push(obj)
+        }
+      })
+    });
+    const result = helper.renderHtml(news, { list: list || [] });
+    const $news_list = $('#news_list');
+    $news_list.html(result);
 
-        //首页 新闻
-        $('.in3Ul').slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: true,
-          dots: false,
-          responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 1,
-              }
-            },
-          ]
-        });
-      }
+    //首页 新闻
+    $('.in3Ul').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+          }
+        },
+      ]
+    });
+  },
+  getAllRequest: function (name) {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        type: 'post',
+        url: 'http://api.chobe.cn/interface.php',
+        dataType: 'json',
+        data: JSON.stringify({
+          func: "articleList",
+          article_type: name,
+        }),
+        success: function (res) {
+          if (res.code === 200) {//请求成功
+            resolve(res.data)
+          }
+        },
+        error: function (err) {
+          resolve([])
+        }
+      });
     })
   },
   bindEvent: function () {
