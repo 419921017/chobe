@@ -43,7 +43,7 @@ const pageFn = {
             date:dayjs(item.created_time,"YYYY-MM-DD HH:mm").format('MM-DD/ YYYY'),
             year: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('YYYY-MM'),
             day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('DD'),
-            path: `news_detail.html?id=${item.id}&type=1`
+            path: `news_detail.html?id=${item.id}&type=${type}`
           }
         })
         const result = helper.renderHtml(templateIndex, { list: list || [] });
