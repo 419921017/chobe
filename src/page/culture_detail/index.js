@@ -31,7 +31,7 @@ const pageFn = {
           }
         })
         const id = helper.getUrlParam("id");
-        const item = list.find(i => i.id === Number(id));
+        const item = list.find(i => i.id === id);
         _this.bindEvent(item)
         let images = item.img.map(i => {
           var pos = i.lastIndexOf('/');
@@ -47,10 +47,11 @@ const pageFn = {
   },
 
   bindEvent: function (item) {
+    console.log(item)
     $("#modal_close").click(function () {
       $("#modal").hide();
     });
-    $("#modal_content").html(item.content)
+    item.content && $("#modal_content").html(item.content)
   }
 }
 

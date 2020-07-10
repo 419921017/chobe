@@ -81,7 +81,7 @@ const pageFn = {
             type,
           }
         })
-        const newsItem = list.find(i => i.id === Number(id));
+        const newsItem = list.find(i => i.id === id);
 
         const result = helper.renderHtml(templateSlides, { ...newsItem });
         const $content = $('#page_content')
@@ -94,7 +94,7 @@ const pageFn = {
   },
   renderNextPage: function (deliveries) {
     const id = helper.getUrlParam("id");
-    const index = deliveries.findIndex(i => i.id === Number(id));
+    const index = deliveries.findIndex(i => i.id === id);
     let list = [];
     if (index === 0) {
       list = [deliveries[deliveries.length - 1], deliveries[index + 1]]
