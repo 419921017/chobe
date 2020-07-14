@@ -8,7 +8,7 @@
       <h4 class="H4 elli">{{title}}</h4>
       <h5 class="H5 elli"></h5>
       <div class="p">
-        {{content}}
+        {{{content}}}
       </div>
     </div>
   </a>
