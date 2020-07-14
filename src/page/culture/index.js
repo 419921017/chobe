@@ -23,6 +23,7 @@ const pageFn = {
       },
       success: function (data) {
         let list = data.map(item => {
+          console.log('content, ', item.content)
           return {
             ...item,
             title: Number(intl) === intlType.en ? item.title_en : item.title,
@@ -32,7 +33,9 @@ const pageFn = {
             path: `culture_detail.html?id=${item.id}&type=${type}`
           }
         })
+
         const result = helper.renderHtml(templateIndex, { list: list || [] });
+        console.log(result)
         const $list = $('#list');
         $list.html(result);
       }
