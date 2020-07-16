@@ -2737,6 +2737,7 @@ i {
   padding: 28px 30px 30px 30px;
   text-align: center;
   border: 2px solid rgba(255, 255, 255, 0);
+  min-height: 540px;
 }
 
 .ab3Ul .box .img {
@@ -2774,7 +2775,7 @@ i {
   min-height: 156px;
   margin-top: 15px;
   text-align: justify;
-  text-align-last: justify;
+  /* text-align-last: justify; */
 }
 
 .ab3Ul .slick-dots {
@@ -2904,7 +2905,7 @@ i {
   margin-top: 25px;
   min-height:210px;
   text-align:justify;
-  text-align-last:justify;
+  /* text-align-last:justify; */
   padding: 0 10px;
 }
 
@@ -4003,7 +4004,7 @@ i {
   bottom: -4px;
   height: 2px;
   width: 100%;
-  background-color: #3A51FF
+  background-color: #9c612e;
 }
 
  .senior-managers-position {
@@ -4017,7 +4018,9 @@ i {
   font-size: 12px;
   line-height: 22px;
   margin: 0;
-  padding: 0 16px
+  padding: 0 16px;
+  text-align:justify;
+
 }
 
  .senior-managers .pc {
@@ -4054,8 +4057,10 @@ i {
 
  .senior-managers .senior-managers-item:nth-child(even) .senior-managers-info {
       position: static;
-      margin-left: 31%;
-      max-width: 495px
+      margin-left: 35%;
+      max-width: 495px;
+      text-align:right;
+
   }
 
  .senior-managers .senior-managers-item:nth-child(even) .senior-managers-avatar {
@@ -4065,7 +4070,8 @@ i {
 
  .senior-managers .senior-managers-item:nth-child(even) .senior-managers-name {
       position: static;
-      padding: 0
+      padding: 0;
+      text-align:right;
   }
 
  .senior-managers .senior-managers-item:nth-child(even) .senior-managers-name::after {
@@ -4120,7 +4126,8 @@ i {
       padding: 0 0 0 49px;
       margin: 0 0 22px 0;
       font-size: 30px;
-      line-height: 42px
+      line-height: 42px;
+      color: #333;
   }
 
  .senior-managers .senior-managers-name::after {
@@ -4134,7 +4141,7 @@ i {
   }
 
  .senior-managers .senior-managers-intro {
-      font-size: 14px;
+      font-size: 16px;
       padding: 0 0 0 49px
   }
 

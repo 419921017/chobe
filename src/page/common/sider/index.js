@@ -14,8 +14,11 @@ const pageFn = {
       culture_detail:"culture",
     }
     name = urlTemp[name] ? urlTemp[name] : name;
+    if (!menu_item) {
+      return
+    }
     const menu_item = menus.find(i => i.key === name);
-    const list = menu_item.children.map(i => ({
+    const list = menu_item && menu_item.children.map(i => ({
       name: i.name,
       enName: i.enName,
       className: type === i.id ? "on" : '',

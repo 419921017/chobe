@@ -83,7 +83,7 @@ const pageFn = {
           return {
             ...item,
             name: Number(type) === intlType.en ? item.name_en : item.name,
-            // position: Number(type) === intlType.en ? item.position_en : item.position,
+            title: Number(type) === intlType.en ? item.title_en : item.title,
             introduction: Number(type) === intlType.en ? item.introduction_en : item.introduction,
           }
         });

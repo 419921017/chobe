@@ -60,7 +60,6 @@ const pageFn = {
   renderContent: function () {
     const _this = this;
     const id = helper.getUrlParam("id");
-    $("#delivery_banner").html(`<img src="images/news/banner_1.jpg" width="100%" height="650" title="" alt="">`);
 
     const intl = Cookies.get('page_intl');
     const type = Number(helper.getUrlParam("type")) || 1;
@@ -82,6 +81,8 @@ const pageFn = {
           }
         })
         const newsItem = list.find(i => i.id === id);
+        
+        $("#delivery_banner").html(`<img src="${newsItem.banner}" width="100%" height="650" title="" alt="">`);
 
         const result = helper.renderHtml(templateSlides, { ...newsItem });
         const $content = $('#page_content')
