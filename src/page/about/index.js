@@ -88,31 +88,32 @@ const pageFn = {
           }
         });
 
-        const result = helper.renderHtml(teamTemp, { list });
-        const $ab3Ul = $('#ab3Ul');
-        $ab3Ul.html(result);
-
-        //关于我们 团队
-        $('.ab3Ul').slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: true,
-          dots: true,
-          responsive: [
-            {
-              breakpoint: 1630,
-              settings: {
-                slidesToShow: 2,
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 1,
-              }
-            },
-          ]
-        });
+        setTimeout(() => {
+          const result = helper.renderHtml(teamTemp, { list });
+          const $ab3Ul = $('#ab3Ul');
+          $ab3Ul.html(result);
+          //关于我们 团队
+          $('.ab3Ul').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            dots: true,
+            responsive: [
+              {
+                breakpoint: 1630,
+                settings: {
+                  slidesToShow: 2,
+                }
+              },
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 1,
+                }
+              },
+            ]
+          });
+        }, 100)
       }
     })
   }
