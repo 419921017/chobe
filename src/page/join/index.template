@@ -22,11 +22,7 @@
       <h1 class="H1" data-intl="post">岗位描述：</h1>
       <div class="p">
         <pre>{{description}}<br />
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp;
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp;<br />校园招聘应聘方式：<br />求职者可将简历通过附件的形式，发送至<a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-            data-cfemail="f09882b093989f92959391809984919cde939e">[email&#160;protected]</a>。<br />邮件主题及附件名称统一为：姓名-专业-学校（2019校园招聘）。
+          
         </pre>
       </div>
     </div>
@@ -39,8 +35,6 @@
 
       </div>
     </div>
-    <a href="/cdn-cgi/l/email-protection#5038221033383f32353331203924313c7e333e6f2325323a3533246db6dac5b8e5d4b7fef1b7c0d6b9d3f8b5feceb4e9f0b7c4cf"
-      class="more" data-intl="application">申请职位</a>
   </div>
 </li>
 {{/list}}
