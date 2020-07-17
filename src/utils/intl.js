@@ -57,7 +57,11 @@ export const en = {
   requirements:"Job requirements",
   application:"Apply position",
   preview:"< Previous",
-  next:"Next >"
+  next:"Next >",
+  address:"Address:",
+  tel:"Tel:",
+  email:"E-mail:",
+  addressStr:" No. 868 Sakura Road, Pudong New District, Shanghai Construction Datang International Plaza, Flat A, Room 2001"
 }
 export const cn = {
   home: "首页",
@@ -117,7 +121,11 @@ export const cn = {
   requirements:"任职要求",
   application:"申请职位",
   preview:"< 前一张",
-  next:"下一张 >"
+  next:"下一张 >",
+  address:"地址:",
+  tel:"电话:",
+  email:"电子邮件:",
+  addressStr:"上海市浦东新区樱花路868号建工大厦国际广场2001室"
 }
 
 export const switchIntl = () => {
