@@ -31,7 +31,7 @@ export default (function () {
     for (i = 0; i < arr.length; i++) {
       out += '<div class="photo" id="' + i + '"><div class="side side-front"><figure>' +
         '<img src="' + arr[i].name + '" alt="' + arr[i].name + '"/>' +
-        '<figcaption>' + arr[i].caption + '</figcaption>' +
+        // '<figcaption>' + arr[i].caption + '</figcaption>' +
         '</figure></div><div class="side side-back"><div><p>' + arr[i].description + '</p></div></div></div>';
     }
     document.getElementById("gallery").innerHTML = out;

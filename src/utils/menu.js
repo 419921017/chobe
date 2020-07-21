@@ -100,24 +100,17 @@ export const menus = [{
   }, {
     id: 3,
     parentId: 4,
-    name: "时事新闻",
-    enName: "news3",
+    name: "乔贝动态",
+    enName: "news4",
     key: 'news',
     path: '/news.html?type=3',
   }, {
     id: 4,
     parentId: 4,
-    name: "乔贝动态",
-    enName: "news4",
-    key: 'news',
-    path: '/news.html?type=4',
-  }, {
-    id: 5,
-    parentId: 4,
     name: "被投企业公众号文章",
     enName: "news5",
     key: 'news',
-    path: '/news.html?type=5',
+    path: '/news.html?type=4',
   }],
 }, {
   id: 5,

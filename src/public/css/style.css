@@ -149,8 +149,45 @@ i {
   top: 0;
   left: 0;
   height: 90px;
+  display: flex;
+  justify-content: center;
+}
+.top1 .top1-content{
+  width:1600px ;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 1800px){
+  .top1 .top1-content{
+    width:1500px ;
+  }
+}
+@media screen and (max-width:1500px){
+  .top1 .top1-content{
+    width:1100px ;
+  }
 }
 
+
+.top1 .top1-left{
+  display: flex;
+  align-items: center;
+  width: 180px;
+}
+.top1 .top1-left img{
+  width:180px ;
+}
+.top1 .top1-right{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.top1 .top1-right .top1-meun{
+  
+}
 .logo {
   width: 140px;
   height: auto;
@@ -220,11 +257,11 @@ i {
   float: right;
   text-align: center;
   font-size: 0;
-  margin: 30px 3px 0 0;
   width: 98px;
   border-radius: 30px;
   background-color: #9c612e;
   padding: 6px 0;
+  margin-left: 20px;
 }
 
 .lang a {
@@ -262,7 +299,7 @@ i {
 .menu .nli {
   position: relative;
   text-align: center;
-  margin-right: 61px;
+  margin-right: 40px;
 }
 .menu_box.cn{
   margin-left:10%;
@@ -799,7 +836,7 @@ i {
 .top_90{
   padding-top: 90px;
 }
-@media screen and (max-width: 767px){
+@media screen and (max-width: 768px){
   .top_90{
     padding: 0;
   }
@@ -4236,7 +4273,7 @@ i {
 }
 
 figure {
-  width: 250px;
+  width: 300px;
   position: absolute;
   padding: 10px;
   margin: 0 auto;
@@ -4248,7 +4285,6 @@ figure img {
   height: auto;
   max-width: 100%;
   margin: 0 auto;
-  margin-bottom: 15px;
 }
 
 figure figcaption {
@@ -4350,4 +4386,17 @@ pre{
 .ab3Ul .slick-slide img{
   width: 146px;
   height: 146px;
+}
+.footer_address{
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+}
+.footer_address_left{
+  text-align: left;
+  margin-top: 20px;
+  margin-right: 40px;
+}
+.footer_address_left a{
+  color: #fff;
 }
