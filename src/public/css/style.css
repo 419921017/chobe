@@ -4007,12 +4007,19 @@ i {
   right: 0;
   width: 114px;
 }
+@media (max-width:800px) {
+  .senior-managers-item-inner {
+    padding: 45px 0 35px
+  }
+  
+}
 
 @media (max-width:800px) {
   .senior-managers-avatar {
     height: 94px;
     overflow: hidden;
     border-radius: 4px;
+    top: 0px;
   }
 }
 
