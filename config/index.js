@@ -18,6 +18,14 @@ const config = {
       name: '企业详情',
     },
     {
+      key: 'fund',
+      name: '产业基金',
+    },
+    {
+      key: 'fund_detail',
+      name: "产业基金详情",
+    },
+    {
       key: 'news',
       name: '新闻动态',
     },

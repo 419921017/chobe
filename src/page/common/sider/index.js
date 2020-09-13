@@ -12,6 +12,7 @@ const pageFn = {
       delivery_detail: "delivery",
       news_detail: "news",
       culture_detail:"culture",
+      fund_detail:"fund",
     }
     name = urlTemp[name] ? urlTemp[name] : name;
     // if (!menu_item) {

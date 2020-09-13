@@ -78,6 +78,27 @@ export const menus = [{
     path: '/delivery.html?type=3',
   }],
 }, {
+  id: 8,
+  name: "产业基金",
+  enName: "fund",
+  path: '/fund.html?type=1',
+  key: 'fund',
+  children: [{
+    id: 1,
+    parentId: 8,
+    name: "生物产业基金",
+    enName: "fund1",
+    key: 'fund',
+    path: '/fund.html?type=1',
+  }, {
+    id: 2,
+    parentId: 8,
+    name: "物联网产业基金",
+    enName: "fund1",
+    key: 'fund',
+    path: '/fund.html?type=2',
+  }],
+}, {
   id: 4,
   name: "新闻动态",
   enName: "news",

@@ -836,9 +836,12 @@ i {
 .top_90{
   padding-top: 90px;
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 990px){
   .top_90{
     padding: 0;
+  }
+  .top_90 .c_banner img{
+    max-height: 160px;
   }
 }
 .slide1 .list {
@@ -1064,7 +1067,7 @@ i {
   background-color: #262626;
   position: absolute;
   bottom: 41px;
-  right: -84px;
+  right: -125px;
   border-radius: 30px;
   text-align: center;
   line-height: 42px;
@@ -1318,6 +1321,7 @@ i {
   background: url(../images/j3.jpg) center no-repeat;
   background-size: cover;
   padding: 85px 0 85px 0;
+  margin:50px -70px;
 }
 
 .title2 .H4 {
@@ -2084,8 +2088,8 @@ i {
   margin-top: 40px;
   background-color: #f8f8f8;
   padding: 40px;
-  height: 352px;
   overflow: hidden;
+  box-shadow:0px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .comUl .img {
@@ -2099,6 +2103,12 @@ i {
   -moz-transition: all 0.3s ease-out 0s;
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
+}
+
+@media screen and (max-width: 990px){
+  .comUl .img img{
+    max-height: 210px;
+  }
 }
 
 .comUl .text {
@@ -2142,7 +2152,6 @@ i {
 @media screen and (max-width:1629px) {
   .comUl .list {
     padding: 20px;
-    height: 415px;
   }
   .comUl .img {
     width: 380px;
@@ -2450,7 +2459,10 @@ i {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-
+.index-desc{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .comDe2Ul .box:hover .img img {
   transform: scale(1.1);
   -webkit-transform: scale(1.1);
@@ -4309,17 +4321,16 @@ figure figcaption {
   z-index: 999;
 }
 
-button {
+.navbar button {
   background-color: transparent;
   padding: 10px 24px;
   color: #ffffff;
-  border: 2px solid black;
   -webkit-transition-duration: 0.4s;
   -moz-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
 
-button:hover {
+.navbar button:hover {
   background-color: #a00;
   color: white;
 }

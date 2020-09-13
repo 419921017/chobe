@@ -1,7 +1,7 @@
 import { helper } from 'utils';
 import dayjs from 'dayjs';
 import Cookies from 'js-cookie';
-import { intlType, deliveryType, newsType } from 'utils/constants';
+import { intlType, deliveryType, newsType,fundType } from 'utils/constants';
 
 require('../common');
 
@@ -15,7 +15,22 @@ const pageFn = {
   loadData: function () {
     this.loadDelivery();
     this.loadNews();
+    this.loadIndustry();
     this.bindEvent();
+    this.getProfile();
+  },
+  getProfile: function () {
+    const type = Cookies.get('page_intl');
+    helper.request({
+      data: {
+        func: "articleList",
+        article_type: "公司简介",
+      },
+      success: function (data) {
+        const $content = $('#content');
+        $content.html(Number(type) === intlType.en ? data.content_en : data.content);
+      }
+    })
   },
   loadDelivery: async function () {
     const _this = this;
@@ -34,6 +49,8 @@ const pageFn = {
             img: item.cover_image,
             subTitle: Number(intl) === intlType.en ? item.desc_en : item.desc,
             descript: Number(intl) === intlType.en ? item.content_en : item.content,
+            year: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('YYYY-MM'),
+            day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('DD'),
             path: `delivery_detail.html?id=${item.id}&type=${index + 1}`,
             icon: "/images/p68889474.png"
           }
@@ -42,29 +59,28 @@ const pageFn = {
       })
     });
 
-    const result = helper.renderHtml(delivery, { list: list || [] });
+    const result = helper.renderHtml(news, { list: list || [] });
     const $delivery_list = $('#delivery_list');
     $delivery_list.html(result);
 
-    //首页 被投企业
-    $('.index2Ul').slick({
-      centerMode: true,
-      centerPadding: '22.7%',
-      slidesToShow: 1,
+    //首页 新闻
+    $('.in2Ul').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
       arrows: true,
       dots: false,
       responsive: [
         {
           breakpoint: 768,
           settings: {
-            centerPadding: '20px',
+            slidesToShow: 1,
           }
         },
       ]
     });
   },
   loadNews: async function () {
-    
+
     const _this = this;
     const intl = Cookies.get('page_intl');
     const promise = newsType.map(item => {
@@ -107,6 +123,53 @@ const pageFn = {
 
     //首页 新闻
     $('.in3Ul').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+          }
+        },
+      ]
+    });
+  },
+  loadIndustry: async function () {
+    const _this = this;
+    const intl = Cookies.get('page_intl');
+    const promise = fundType.map(item => {
+      return _this.getAllRequest(item)
+    })
+    const all = await Promise.all(promise);
+    let list = [];
+    all.forEach((data, index) => {
+      data.forEach(item => {
+        if (item.id) {
+          const obj = {
+            ...item,
+            title: Number(intl) === intlType.en ? item.title_en : item.title,
+            img: item.cover_image,
+            subTitle: Number(intl) === intlType.en ? item.desc_en : item.desc,
+            descript: Number(intl) === intlType.en ? item.content_en : item.content,
+            year: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('YYYY-MM'),
+            day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('DD'),
+            path: `delivery_detail.html?id=${item.id}&type=${index + 1}`,
+            icon: "/images/p68889474.png"
+          }
+          list.push(obj);
+        }
+      })
+    });
+
+    const result = helper.renderHtml(news, { list: list || [] });
+    const $delivery_list = $('#industry_list');
+    $delivery_list.html(result);
+    
+    //首页 新闻
+    $('.in4Ul').slick({
       slidesToShow: 3,
       slidesToScroll: 1,
       arrows: true,
