@@ -833,6 +833,9 @@ i {
 .c_banner {
   position: relative;
 }
+.c_banner img{
+  max-height: 600px;
+}
 .top_90{
   padding-top: 90px;
 }

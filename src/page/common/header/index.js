@@ -53,7 +53,7 @@ const pageFn = {
       if ($(this).find('.ul2').length < 1) {
         $(this).find('h4 b').remove();
       } else {
-        $(this).find('h4 a').attr('href', 'javascript:;');
+        // $(this).find('h4 a').attr('href', 'javascript:;');
       }
     });
 

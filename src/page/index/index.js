@@ -156,7 +156,7 @@ const pageFn = {
             descript: Number(intl) === intlType.en ? item.content_en : item.content,
             year: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('YYYY-MM'),
             day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('DD'),
-            path: `delivery_detail.html?id=${item.id}&type=${index + 1}`,
+            path: `fund_detail.html?id=${item.id}&type=${index + 1}`,
             icon: "/images/p68889474.png"
           }
           list.push(obj);

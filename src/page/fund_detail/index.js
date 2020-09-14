@@ -95,14 +95,17 @@ const pageFn = {
   renderNextPage: function (deliveries) {
     const id = helper.getUrlParam("id");
     const index = deliveries.findIndex(i => i.id === id);
-    let list = [];
-    if (index === 0) {
-      list = [deliveries[deliveries.length - 1], deliveries[index + 1]]
-    } else if (index === deliveries.length - 1) {
-      list = [deliveries[index - 1], deliveries[0]]
-    } else {
-      list = [deliveries[index - 1], deliveries[index + 1]]
+    let list =deliveries;
+    if(deliveries.length > 1){
+      if (index === 0) {
+        list = [deliveries[deliveries.length - 1], deliveries[index + 1]]
+      } else if (index === deliveries.length - 1) {
+        list = [deliveries[index - 1], deliveries[0]]
+      } else {
+        list = [deliveries[index - 1], deliveries[index + 1]]
+      }
     }
+    
     const result = helper.renderHtml(templateBottom, { list });
     const $content = $('#delivery_bottom')
     $content.html(result);

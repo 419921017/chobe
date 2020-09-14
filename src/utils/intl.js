@@ -61,7 +61,10 @@ export const en = {
   address:"Address:",
   tel:"Tel:",
   email:"E-mail:",
-  addressStr:" No. 868 Sakura Road, Pudong New District, Shanghai Construction Datang International Plaza, Flat A, Room 2001"
+  addressStr:" No. 868 Sakura Road, Pudong New District, Shanghai Construction Datang International Plaza, Flat A, Room 2001",
+  fund:"Industrial fund",
+  fund1:"BIO Industrial fund",
+  fund2:"IOT Industrial fund",
 }
 export const cn = {
   home: "首页",
@@ -125,7 +128,10 @@ export const cn = {
   address:"地址:",
   tel:"电话:",
   email:"电子邮件:",
-  addressStr:"上海市浦东新区樱花路868号建工大厦国际广场2001室"
+  addressStr:"上海市浦东新区樱花路868号建工大厦国际广场2001室",
+  fund:"产业基金",
+  fund1:"生物产业基金",
+  fund2:"物联网产业基金",
 }
 
 export const switchIntl = () => {

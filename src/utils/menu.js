@@ -94,7 +94,7 @@ export const menus = [{
     id: 2,
     parentId: 8,
     name: "物联网产业基金",
-    enName: "fund1",
+    enName: "fund2",
     key: 'fund',
     path: '/fund.html?type=2',
   }],

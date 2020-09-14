@@ -7,7 +7,7 @@
       <h4 class="H4">{{title}}</h4>
       <h5 class="H5" data-intl="about_name01">{{name}}</h5>
       <div class="p" data-intl="about_desc01">
-        {{introduction}}
+        {{{introduction}}}
       </div>
     </div>
   </li>
