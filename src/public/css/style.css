@@ -834,7 +834,7 @@ i {
   position: relative;
 }
 .c_banner img{
-  max-height: 600px;
+  height: 600px;
 }
 .top_90{
   padding-top: 90px;
@@ -4079,8 +4079,8 @@ i {
   margin: 0;
   padding: 0 16px;
   text-align:justify;
-
 }
+
 
  .senior-managers .pc {
   display: none

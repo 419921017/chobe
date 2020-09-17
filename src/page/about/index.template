@@ -11,7 +11,7 @@
       </div>
       <div class="senior-managers-info">
         <h3 class="senior-managers-name">{{name}}</h3>
-        <p class="senior-managers-intro">{{{content}}}</p>
+        <div class="senior-managers-intro">{{{content}}}</div>
       </div>
     </div>
   </div>
