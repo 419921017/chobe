@@ -3,71 +3,73 @@
 
 <head>
   <%= require('html-loader!./layout/head-common.html') %>
-  <title><%= htmlWebpackPlugin.options.title %>-乔贝资本</title>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>-乔贝资本
+    </title>
 </head>
 
 <body>
   <!--pc top-->
   <%= require('html-loader!./layout/header.html') %>
-  <div class="top_90">
-    <div class="pz_banner c_banner">
-      <ul class="slide1">
-        <div>
-          <li class="list">
-            <a href="#">
-              <img src="<%= require('../public/images/banner7496931.jpg').default %>" width="100%" title="" alt=""
-                class="visible-lg visible-md">
-              <!-- <img src="<%= require('../public/images/banner_ph2393020.jpg').default %>" width="100%" title="" alt=""
+    <div class="top_90">
+      <div class="pz_banner c_banner">
+        <ul class="slide1">
+          <div>
+            <li class="list">
+              <a href="#">
+                <img src="<%= require('../public/images/banner7496931.jpg').default %>" width="100%" title="" alt=""
+                  class="visible-lg visible-md">
+                <!-- <img src="<%= require('../public/images/banner_ph2393020.jpg').default %>" width="100%" title="" alt=""
                 class="visible-xs visible-sm"> -->
-            </a>
-          </li>
-        </div>
-
-        <div>
-          <li class="list">
-            <a href="#">
-              <img src="<%= require('../public/images/banner7496932.jpg').default %>" width="100%" title="" alt=""
-                class="visible-lg visible-md">
-              <!-- <img src="<%= require('../public/images/banner_ph2393021.jpg').default %>" width="100%" title="" alt=""
-                class="visible-xs visible-sm"> -->
-            </a>
-          </li>
-        </div>
-
-        <div>
-          <li class="list">
-            <a href="#">
-              <img src="<%= require('../public/images/banner7496933.jpg').default %>" width="100%" title="" alt=""
-                class="visible-lg visible-md">
-              <!-- <img src="<%= require('../public/images/banner_ph2393022.jpg').default %>" width="100%" title="" alt=""
-                class="visible-xs visible-sm"> -->
-            </a>
-          </li>
-        </div>
-
-      </ul>
-    </div>
-    <main class="pz_main">
-      <div class="index1">
-        <div class="container clearfix">
-          <div class="text wow fadeInLeft">
-            <h3 class="H3">TRUSTWORTHY</h3>
-            <h4 class="H4">PARTNER</h4>
-            <h5 class="H5">关于我们<span class="H6"> / about us</span></h5>
-            <span class="img">
-              <img src="<%= require('../public/images/p2.png').default %>" width="100%">
-            </span>
-            <div class="p index-desc" data-intl="index_desc" id="content">
-
-            </div>
-            <a href="about.html" class="more" data-intl="index_more">了解详情</a>
+              </a>
+            </li>
           </div>
-          <div class="pic wow fadeInRight"> <img src="<%= require('../public/images/j26908971.jpg').default %>"
-              width="100%"> </div>
-        </div>
-      </div>
 
-      <!-- <div class="index2">
+          <div>
+            <li class="list">
+              <a href="#">
+                <img src="<%= require('../public/images/banner7496932.jpg').default %>" width="100%" title="" alt=""
+                  class="visible-lg visible-md">
+                <!-- <img src="<%= require('../public/images/banner_ph2393021.jpg').default %>" width="100%" title="" alt=""
+                class="visible-xs visible-sm"> -->
+              </a>
+            </li>
+          </div>
+
+          <div>
+            <li class="list">
+              <a href="#">
+                <img src="<%= require('../public/images/banner7496933.jpg').default %>" width="100%" title="" alt=""
+                  class="visible-lg visible-md">
+                <!-- <img src="<%= require('../public/images/banner_ph2393022.jpg').default %>" width="100%" title="" alt=""
+                class="visible-xs visible-sm"> -->
+              </a>
+            </li>
+          </div>
+
+        </ul>
+      </div>
+      <main class="pz_main">
+        <div class="index1">
+          <div class="container clearfix">
+            <div class="text wow fadeInLeft">
+              <h3 class="H3">TRUSTWORTHY</h3>
+              <h4 class="H4">PARTNER</h4>
+              <h5 class="H5">关于我们<span class="H6"> / about us</span></h5>
+              <span class="img">
+                <img src="<%= require('../public/images/p2.png').default %>" width="100%">
+              </span>
+              <div class="p index-desc" data-intl="index_desc" id="content">
+
+              </div>
+              <a href="about.html" class="more" data-intl="index_more">了解详情</a>
+            </div>
+            <div class="pic wow fadeInRight"> <img src="<%= require('../public/images/j26908971.jpg').default %>"
+                width="100%"> </div>
+          </div>
+        </div>
+
+        <!-- <div class="index2">
         <div class="title title2 wow fadeInUp">
           <div class="container">
             <h4 class="H4">Was cast enterprise</h4>
@@ -91,41 +93,41 @@
         </div>
       </div> -->
 
-      <div class="index3">
-        <div class="container">
-          <div class="title title2 wow fadeInUp">
-            <h4 class="H4">Was cast enterprise</h4>
-            <h5 class="H5">被投企业</h5>
+        <div class="index3">
+          <div class="container">
+            <div class="title title2 wow fadeInUp">
+              <h4 class="H4">ENTERPRISE</h4>
+              <h5 class="H5">被投企业</h5>
+            </div>
+            <ul class="in3Ul wow fadeInUp" id="delivery_list">
+            </ul>
           </div>
-          <ul class="in3Ul wow fadeInUp" id="delivery_list">
-          </ul>
         </div>
-      </div>
-      <div class="index3">
-        <div class="container">
-          <div class="title wow fadeInUp">
-            <h4 class="H4">Industry Fund</h4>
-            <h5 class="H5">产业基金</h5>
+        <div class="index3">
+          <div class="container">
+            <div class="title wow fadeInUp">
+              <h4 class="H4">Industry Fund</h4>
+              <h5 class="H5">产业基金</h5>
+            </div>
+            <ul class="in3Ul wow fadeInUp" id="industry_list">
+            </ul>
           </div>
-          <ul class="in3Ul wow fadeInUp" id="industry_list">
-          </ul>
         </div>
-      </div>
-      <div class="index3">
-        <div class="container">
-          <div class="title wow fadeInUp">
-            <h4 class="H4">news Industry </h4>
-            <h5 class="H5">新闻动态</h5>
-          </div>
-          <ul class="in3Ul wow fadeInUp" id="news_list">
+        <div class="index3">
+          <div class="container">
+            <div class="title wow fadeInUp">
+              <h4 class="H4">news</h4>
+              <h5 class="H5">新闻动态</h5>
+            </div>
+            <ul class="in3Ul wow fadeInUp" id="news_list">
 
-          </ul>
+            </ul>
+          </div>
         </div>
-      </div>
-    </main>
-  </div>
-  <!--pc footer-->
-  <%= require('html-loader!./layout/footer.html') %>
+      </main>
+    </div>
+    <!--pc footer-->
+    <%= require('html-loader!./layout/footer.html') %>
 </body>
 
 </html>
