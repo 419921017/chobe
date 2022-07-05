@@ -1,12 +1,13 @@
 import { helper } from 'utils';
 import dayjs from 'dayjs';
 import Cookies from 'js-cookie';
-import { intlType, deliveryType, newsType,fundType } from 'utils/constants';
+import { intlType, deliveryType, newsType, fundType } from 'utils/constants';
 
 require('../common');
 
-const delivery = require('./delivery.template');
+// const delivery = require('./delivery.template');
 const news = require('./news.template');
+const slider = require('./slider.template');
 
 const pageFn = {
   init: function () {
@@ -16,7 +17,7 @@ const pageFn = {
     this.loadDelivery();
     this.loadNews();
     this.loadIndustry();
-    this.bindEvent();
+    // this.bindEvent();
     this.getProfile();
   },
   getProfile: function () {
@@ -88,6 +89,8 @@ const pageFn = {
     })
     const all = await Promise.all(promise);
     let list = [];
+    let chobeNews = [];
+
     all.forEach((data, index) => {
       data.forEach(item => {
         if (item.id) {
@@ -113,14 +116,17 @@ const pageFn = {
             day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('DD'),
             path: `news_detail.html?id=${item.id}&type=${index + 1}`
           }
-          list.push(obj)
+          if (obj.id.startsWith("乔贝动态") && chobeNews.length < 3) {
+            chobeNews.push(obj)
+          }
+          list.push(obj);
         }
       })
     });
+
     const result = helper.renderHtml(news, { list: list || [] });
     const $news_list = $('#news_list');
     $news_list.html(result);
-
     //首页 新闻
     $('.in3Ul').slick({
       slidesToShow: 3,
@@ -136,6 +142,8 @@ const pageFn = {
         },
       ]
     });
+
+    this.loadIndexChobeData(chobeNews)
   },
   loadIndustry: async function () {
     const _this = this;
@@ -167,7 +175,7 @@ const pageFn = {
     const result = helper.renderHtml(news, { list: list || [] });
     const $delivery_list = $('#industry_list');
     $delivery_list.html(result);
-    
+
     //首页 新闻
     $('.in4Ul').slick({
       slidesToShow: 3,
@@ -206,16 +214,40 @@ const pageFn = {
     })
   },
   bindEvent: function () {
-    $('.slide1').slick({
-      dots: true,
+    $(".Modern-Slider").slick({
+      autoplay: true,
+      autoplaySpeed: 5000,
       arrows: true,
       speed: 1000,
-      autoplay: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplaySpeed: 5000,
+      dots: true,
+      cssEase: 'linear',
       fade: true,
     });
+  },
+  loadIndexChobeData: function (list) {
+    const imageData = [{
+      mdImage: '/images/banner7496931.jpg',
+      smImage: '/images/banner_ph2393020.jpg',
+    }, {
+      mdImage: '/images/banner7496932.jpg',
+      smImage: '/images/banner_ph2393021.jpg',
+    }, {
+      mdImage: '/images/banner7496933.jpg',
+      smImage: '/images/banner_ph2393022.jpg',
+    }];
+    const newList = list.map((item, index) => ({
+      ...item,
+      ...imageData[index],
+    }))
+    const result = helper.renderHtml(slider, { list: newList || [] });
+    const $slider_list = $('#slider_list');
+    $slider_list.html(result);
+
+    setTimeout(() => {
+      this.bindEvent();
+    }, 100)
   }
 }
 

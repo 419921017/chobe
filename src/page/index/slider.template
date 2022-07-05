@@ -1,0 +1,16 @@
+{{#list}}
+<div class="item">
+  <div class="img-fill">
+    <a href="{{path}}">
+      <img src="{{mdImage}}" width="100%" class="visible-lg visible-md" title="" alt="">
+      <img src="{{smImage}}" width="100%" title="" alt="" class="visible-xs visible-sm">
+      <div class="info">
+        <div>
+          <h3>{{title}}</h3>
+          <button class="smooth">点击查看</button>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+{{/list}}
