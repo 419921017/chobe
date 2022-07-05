@@ -833,9 +833,7 @@ i {
 .c_banner {
   position: relative;
 }
-.c_banner img{
-  height: 600px;
-}
+
 .top_90{
   padding-top: 90px;
 }
@@ -1967,7 +1965,7 @@ i {
 
 .erji.on {
   position: fixed;
-  top: 30px;
+  top: 90px;
   left: auto;
 }
 
