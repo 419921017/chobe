@@ -26,7 +26,7 @@ const pageFn = {
           let contentList = Number(intl) === intlType.en ? item.content_en : item.content;
           let img = "";
           let content = "";
-          contentList.forEach(item => {
+          contentList?.slice(1).forEach(item => {
             if (item.indexOf('.jpg') > -1) {
               content += `<p><img src="${item}" alt="图片" /></p>`;
             } else {
