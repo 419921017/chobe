@@ -1,5 +1,5 @@
 {{#list}}
-<li class="list clearfix wow fadeInUp">
+<li class="list clearfix wow fadeInUp" style="overflow: hidden">
   <a href="{{path}}">
     <div class="img"><img src="{{img}}" width="100%"></div>
     <div class="text">
