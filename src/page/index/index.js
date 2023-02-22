@@ -97,8 +97,8 @@ const pageFn = {
           let contentList = Number(intl) === intlType.en ? item.content_en : item.content;
           let img = "";
           let content = "";
-          contentList.forEach(item => {
-            if (item.indexOf('.jpg') > -1) {
+          contentList.forEach((item, index) => {
+            if (index !== 0 && item.indexOf('.jpg') > -1) {
               if (!img) {
                 img = item;
               }
