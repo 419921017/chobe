@@ -1,4 +1,4 @@
-export const newsType = ["被投企业公众号文章", "乔贝动态", "IPO", "行业新闻"];
+export const newsType = ["行业新闻", "IPO", "乔贝动态", "被投企业公众号文章"];
 
 export const deliveryType = ["TMT", "生物医药", "消费升级"];
 
