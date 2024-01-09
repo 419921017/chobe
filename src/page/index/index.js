@@ -123,16 +123,20 @@ const pageFn = {
             day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format("DD"),
             path: `news_detail.html?id=${item.id}&type=${index + 1}`,
           };
-          if (obj.id.startsWith("被投企业") && chobeNews.length < 3) {
+          if (obj.id.startsWith("被投企业") || obj.id.startsWith("乔贝动态")) {
             chobeNews.push(obj);
           }
           list.push(obj);
         }
       });
     });
-    console.log("---all", all);
-    console.log("---list", list );
-    console.log("---chobeNews", chobeNews);
+    chobeNews = chobeNews
+      .sort((a, b) => (a.created_time < b.created_time ? 1 : -1))
+      .slice(0, 3);
+
+    // console.log("---all", all);
+    // console.log("---list", list);
+    // console.log("---chobeNews", chobeNews);
     const result = helper.renderHtml(news, { list: list || [] });
     const $news_list = $("#news_list");
     $news_list.html(result);
