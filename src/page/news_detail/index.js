@@ -38,7 +38,7 @@ const pageFn = {
             ...item,
             title: Number(intl) === intlType.en ? item.title_en : item.title,
             author: item.author,
-            img,
+            img: img || item?.image,
             content,
             date: item.created_time,
             count: item.view_number,
@@ -55,12 +55,13 @@ const pageFn = {
   },
   renderHeader: function (list) {
     const news_id = helper.getUrlParam("id");
-    const item = list.find(i => i.id === news_id);
+    const item = list.find(i => i.id == news_id);
     if(item){
       const result = helper.renderHtml(templateHeader, item);
       const $news_header = $('#news_header');
       $news_header.html(result);
       $('#title').html(item.title);
+
       this.renderContent(item);
       this.renderGLList(list);
       this.renderXGList(list);
@@ -73,7 +74,7 @@ const pageFn = {
 
   renderGLList: function (newsData) {
     const id = helper.getUrlParam("id");
-    const index = newsData.findIndex(i => i.id === id);
+    const index = newsData.findIndex(i => i.id == id);
     const type = Number(helper.getUrlParam("type")) || 1;
     const intl = Cookies.get('page_intl');
     let newHtml = '<a href="javascript:;" class="pageUp elli"><span data-intl="previous">上一篇</span>：<span data-intl="empty">没有了</span></a>';
@@ -113,7 +114,7 @@ const pageFn = {
   renderXGList: function (newList) {
     const id = helper.getUrlParam("id");
     const intl = Cookies.get('page_intl');
-    const index = newList.findIndex(i => i.id === id);
+    const index = newList.findIndex(i => i.id == id);
     const type = Number(helper.getUrlParam("type")) || 1;
 
     let list = [];

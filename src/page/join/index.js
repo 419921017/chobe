@@ -7,9 +7,8 @@ const indexTemp = require('./index.template');
 
 const pageFn = {
   init: function () {
+
     this.renderContent();
-
-
   },
   bindEvent: function () {
     $(".listTop").click(function () {
@@ -54,7 +53,7 @@ const pageFn = {
         const $list = $('#joinList');
         $list.html(result);
         _this.bindEvent();
-      }
+      },
     })
   },
 }

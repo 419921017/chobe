@@ -80,7 +80,7 @@ const pageFn = {
             type,
           }
         })
-        const newsItem = list.find(i => i.id === id);
+        const newsItem = list.find(i => i.id == id);
         
         $("#delivery_banner").html(`<img src="${newsItem.banner}" width="100%" height="650" title="" alt="">`);
 
@@ -95,7 +95,7 @@ const pageFn = {
   },
   renderNextPage: function (deliveries) {
     const id = helper.getUrlParam("id");
-    const index = deliveries.findIndex(i => i.id === id);
+    const index = deliveries.findIndex(i => i.id == id);
     let list = [];
     if (index === 0) {
       list = [deliveries[deliveries.length - 1], deliveries[index + 1]]

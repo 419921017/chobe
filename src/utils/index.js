@@ -6,11 +6,13 @@ export const helper = {
     var _this = this;
     $.ajax({
       type: param.method || 'post',
-      url: param.url || 'http://api.chobe.cn/interface.php',
+      // url: param.url || 'http://api.chobe.cn/interface.php',
+      url: param.url  || "http://api.chobe.cn/website/list",
+      contentType: "application/json",
       dataType: param.tyle || 'json',
       data:JSON.stringify( param.data) || '',
       success: function (res) {
-        if (res.code === 200) {//请求成功
+        if (res?.code === 200 || res?.status === 200) {//请求成功
           typeof param.success === 'function' && param.success(res.data);
         } else if (res.status === 10) {//没有登录
         } else if (res.status === 1) {//请求错误

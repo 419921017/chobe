@@ -38,7 +38,7 @@ const pageFn = {
             ...item,
             title: Number(intl) === intlType.en ? item.title_en : item.title,
             author: item.author,
-            img,
+            img: img || item?.image,
             content,
             date:dayjs(item.created_time,"YYYY-MM-DD HH:mm").format('MM-DD/ YYYY'),
             year: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format('YYYY-MM'),

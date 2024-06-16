@@ -21,7 +21,7 @@
     "webpack-dev-server": "^3.11.3"
   },
   "scripts": {
-    "start": "set WEBPACK_ENV=dev && webpack-dev-server",
+    "start": "set WEBPACK_ENV=dev && webpack-dev-server --watch",
     "build": "set WEBPACK_ENV=online && webpack -p"
   },
   "repository": {

@@ -64,7 +64,6 @@ const pageFn = {
         }
       });
     });
-
     const result = helper.renderHtml(news, { list: list || [] });
     const $delivery_list = $("#delivery_list");
     $delivery_list.html(result);
@@ -115,7 +114,7 @@ const pageFn = {
             ...item,
             title: Number(intl) === intlType.en ? item.title_en : item.title,
             author: item.author,
-            img,
+            img: img || item?.image,
             content,
             year: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format(
               "YYYY-MM"
@@ -123,20 +122,17 @@ const pageFn = {
             day: dayjs(item.created_time, "YYYY-MM-DD HH:mm").format("DD"),
             path: `news_detail.html?id=${item.id}&type=${index + 1}`,
           };
-          if (obj.id.startsWith("被投企业") || obj.id.startsWith("乔贝动态")) {
-            chobeNews.push(obj);
-          }
+          // if (obj?.id?.startsWith("被投企业") || obj?.id?.startsWith("乔贝动态")) {
+          //   chobeNews.push(obj);
+          // }
           list.push(obj);
         }
       });
     });
-    chobeNews = chobeNews
-      .sort((a, b) => (a.created_time < b.created_time ? 1 : -1))
-      .slice(0, 3);
+    // chobeNews = chobeNews
+    //   .sort((a, b) => (a.created_time < b.created_time ? 1 : -1))
+    //   .slice(0, 3);
 
-    // console.log("---all", all);
-    // console.log("---list", list);
-    // console.log("---chobeNews", chobeNews);
     const result = helper.renderHtml(news, { list: list || [] });
     const $news_list = $("#news_list");
     $news_list.html(result);
@@ -187,7 +183,6 @@ const pageFn = {
         }
       });
     });
-
     const result = helper.renderHtml(news, { list: list || [] });
     const $delivery_list = $("#industry_list");
     $delivery_list.html(result);
@@ -212,14 +207,17 @@ const pageFn = {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: "post",
-        url: "http://api.chobe.cn/interface.php",
+        // url: "http://api.chobe.cn/interface.php",
+        url: "http://api.chobe.cn/website/list",
+        // url: `/website/list`,
         dataType: "json",
+        contentType: "application/json",
         data: JSON.stringify({
           func: "articleList",
           article_type: name,
         }),
         success: function (res) {
-          if (res.code === 200) {
+          if (res?.code === 200 || res?.status === 200) {
             //请求成功
             resolve(res.data);
           }
