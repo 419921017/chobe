@@ -208,7 +208,7 @@ const pageFn = {
       $.ajax({
         type: "post",
         // url: "http://api.chobe.cn/interface.php",
-        url: "http://api.chobe.cn/website/list",
+        url: "https://api.chobe.cn/website/list",
         // url: `/website/list`,
         dataType: "json",
         contentType: "application/json",
