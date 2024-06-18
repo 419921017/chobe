@@ -47,13 +47,6 @@ const config = {
     noInfo: true,
     open: true,
     contentBase: path.join(__dirname, 'dist'),
-    // proxy: {
-    //   '/website/list': {
-    //     target: "http://api.chobe.cn/website/list",
-    //     // secure:false,
-    //     changeOrigin: true,
-    //   }
-    // }
   }
 }
 config.entry = html_config.entryList();

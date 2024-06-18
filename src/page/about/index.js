@@ -1,29 +1,30 @@
+import { helper } from "utils";
+import Cookies from "js-cookie";
+import { deliveries } from "utils/data";
+import { intlType } from "utils/constants";
 
+require("../common");
 
-import { helper } from 'utils';
-import Cookies from 'js-cookie';
-import { deliveries } from 'utils/data';
-import { intlType } from 'utils/constants';
-
-require('../common');
-
-const indexTemp = require('./index.template');
-const teamTemp = require('./team.template');
+const indexTemp = require("./index.template");
+const teamTemp = require("./team.template");
 
 const pageFn = {
   init: function () {
     $(window).scroll(function () {
-      if ($(window).scrollTop() >= $(".top1").height() + $(".c_banner").height()) {
-        $(".erji").addClass("on")
+      if (
+        $(window).scrollTop() >=
+        $(".top1").height() + $(".c_banner").height()
+      ) {
+        $(".erji").addClass("on");
       } else {
-        $(".erji").removeClass("on")
+        $(".erji").removeClass("on");
       }
     });
 
-    $('#left_9').addClass('on');
-    maodian('.hd', '.bd');
+    $("#left_9").addClass("on");
+    maodian(".hd", ".bd");
     // 关于我们
-    $('.ab2Ul').slick({
+    $(".ab2Ul").slick({
       dots: false,
       arrows: true,
       speed: 1000,
@@ -35,65 +36,80 @@ const pageFn = {
     });
   },
   getFounder: function () {
-    const type = Cookies.get('page_intl');
+    const type = Cookies.get("page_intl");
     helper.request({
       data: {
         func: "articleList",
         article_type: "公司创始人",
       },
       success: function (data) {
-        let list = data.map(item => {
+        let list = data.map((item) => {
           return {
             ...item,
             name: Number(type) === intlType.en ? item.name_en : item.name,
-            content: Number(type) === intlType.en ? item.introduction_en : item.introduction,
-          }
-        })
+            content:
+              Number(type) === intlType.en
+                ? item.introduction_en
+                : item.introduction,
+          };
+        });
         const result = helper.renderHtml(indexTemp, { list });
-        const $founder = $('#founder');
+        const $founder = $("#founder");
         $founder.html(result);
-      }
-    })
+      },
+    });
   },
   getProfile: function () {
-    const type = Cookies.get('page_intl');
+    const type = Cookies.get("page_intl");
     helper.request({
       data: {
         func: "articleList",
         article_type: "公司简介",
       },
-      success: function (data) {
+      success: function (resData) {
+        const data = Array.isArray(resData) ? resData?.[0] : resData;
         $("#about_img").attr("src", data.image);
-        const $title = $('#title');
+        const $title = $("#title");
         $title.html(Number(type) === intlType.en ? data.title_en : data.title);
-        const $content = $('#content');
-        $content.html(Number(type) === intlType.en ? data.content_en : data.content);
-      }
-    })
+        const $content = $("#content");
+        $content.html(
+          Number(type) === intlType.en
+            ? Array.isArray(data?.content_en)
+              ? data?.content_en?.[0]
+              : data?.content_en
+            : Array.isArray(data?.content)
+            ? data?.content?.[0]
+            : data?.content
+        );
+      },
+    });
   },
   getTeam: function () {
-    const type = Cookies.get('page_intl');
+    const type = Cookies.get("page_intl");
     helper.request({
       data: {
         func: "articleList",
         article_type: "核心团队",
       },
       success: function (data) {
-        let list = data.map(item => {
+        let list = data.map((item) => {
           return {
             ...item,
             name: Number(type) === intlType.en ? item.name_en : item.name,
             title: Number(type) === intlType.en ? item.title_en : item.title,
-            introduction: Number(type) === intlType.en ? item.introduction_en : item.introduction,
-          }
+            introduction:
+              Number(type) === intlType.en
+                ? item.introduction_en
+                : item.introduction,
+          };
         });
 
         setTimeout(() => {
           const result = helper.renderHtml(teamTemp, { list });
-          const $ab3Ul = $('#ab3Ul');
+          const $ab3Ul = $("#ab3Ul");
           $ab3Ul.html(result);
           //关于我们 团队
-          $('.ab3Ul').slick({
+          $(".ab3Ul").slick({
             slidesToShow: 3,
             slidesToScroll: 1,
             arrows: true,
@@ -103,25 +119,25 @@ const pageFn = {
                 breakpoint: 1630,
                 settings: {
                   slidesToShow: 2,
-                }
+                },
               },
               {
                 breakpoint: 768,
                 settings: {
                   slidesToShow: 1,
-                }
+                },
               },
-            ]
+            ],
           });
-        }, 100)
-      }
-    })
-  }
-}
+        }, 100);
+      },
+    });
+  },
+};
 
 $(function () {
   pageFn.init();
   pageFn.getProfile();
   pageFn.getFounder();
   pageFn.getTeam();
-})
+});

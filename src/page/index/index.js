@@ -21,16 +21,22 @@ const pageFn = {
     this.getProfile();
   },
   getProfile: function () {
-    const type = Cookies.get("page_intl");
     helper.request({
       data: {
         func: "articleList",
         article_type: "公司简介",
       },
-      success: function (data) {
+      success: function (resData) {
+        const data = Array.isArray(resData) ? resData?.[0] : resData;
         const $content = $("#content");
         $content.html(
-          Number(type) === intlType.en ? data.content_en : data.content
+          Number(type) === intlType.en
+            ? Array.isArray(data?.content_en)
+              ? data?.content_en?.[0]
+              : data?.content_en
+            : Array.isArray(data?.content)
+            ? data?.content?.[0]
+            : data?.content
         );
       },
     });

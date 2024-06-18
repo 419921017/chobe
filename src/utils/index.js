@@ -6,7 +6,6 @@ export const helper = {
     var _this = this;
     $.ajax({
       type: param.method || 'post',
-      // url: param.url || 'http://api.chobe.cn/interface.php',
       url: param.url  || "https://api.chobe.cn/website/list",
       contentType: "application/json",
       dataType: param.tyle || 'json',
